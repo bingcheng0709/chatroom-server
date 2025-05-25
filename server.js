@@ -21,6 +21,7 @@ const allowedOrigins = isProduction
         'https://your-frontend-domain.com',
         'https://your-frontend-domain.netlify.app',
         'https://your-frontend-domain.vercel.app',
+        'null', // 允許本地文件訪問
         // 添加您的實際前端域名
     ]
     : [
@@ -28,7 +29,8 @@ const allowedOrigins = isProduction
         'http://localhost:8080',
         'http://127.0.0.1:3000',
         'http://127.0.0.1:8080',
-        'http://localhost:5500'
+        'http://localhost:5500',
+        'null' // 允許本地文件訪問
     ];
 
 // 安全性中間件
@@ -45,19 +47,9 @@ app.use(helmet({
     } : false
 }));
 
-// CORS 設定
+// CORS 設定 - 簡化配置以支持測試
 const corsOptions = {
-    origin: function (origin, callback) {
-        // 允許無 origin 的請求 (如 mobile apps)
-        if (!origin) return callback(null, true);
-        
-        if (allowedOrigins.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            console.log(`CORS blocked origin: ${origin}`);
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+    origin: true, // 暫時允許所有來源以便測試
     methods: ["GET", "POST"],
     credentials: true
 };
