@@ -389,12 +389,12 @@ async function startServer() {
         
         setupSocketHandlers();
         
-        server.listen(PORT, '0.0.0.0', () => {
+        server.listen(PORT, () => {
             console.log(`🚀 聊天室服務器啟動成功！`);
-            console.log(`📡 服務器地址: http://0.0.0.0:${PORT}`);
+            console.log(`📡 服務器地址: http://localhost:${PORT}`);
             console.log(`🌐 環境: ${process.env.NODE_ENV || 'development'}`);
             console.log(`👥 支援的聊天室: ${DEFAULT_ROOMS.length} 個`);
-            console.log(`🔒 允許的來源: ${allowedOrigins.join(', ')}`);
+            console.log(`🔒 CORS 設定: 允許所有來源 (測試模式)`);
         });
     } catch (error) {
         console.error('❌ 服務器啟動失敗:', error);
