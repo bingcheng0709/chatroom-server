@@ -1,0 +1,12 @@
+version: 2
+services:
+  - type: web
+    name: dyu-chatroom
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: false
+    envVars:
+      - key: NODE_ENV
+        value: production
