@@ -1,0 +1,19 @@
+{
+  "name": "dyu-chatroom-server",
+  "version": "1.0.0",
+  "description": "大葉大學心理健康互助平台聊天室後端服務",
+  "main": "server-basic.js",
+  "scripts": {
+    "start": "node server-basic.js",
+    "dev": "node server-basic.js"
+  },
+  "keywords": ["chatroom", "websocket", "mental-health", "university"],
+  "author": "DYU Mental Health Platform",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
